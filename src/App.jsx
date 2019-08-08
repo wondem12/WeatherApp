@@ -29,7 +29,7 @@ class App extends Component {
       description: "",
       icon: "",
       Loading: true,
-      error:''
+      error: ""
     };
     this.weatherIcon = {
       Thunderstrom: "wi-thunderstorm",
@@ -65,6 +65,7 @@ class App extends Component {
         break;
       case rangeId >= 801 && rangeId <= 804:
         this.setState({ icon: icons.Clouds });
+
         break;
       default:
         this.setState({ icon: icons.Clouds });
@@ -110,7 +111,6 @@ class App extends Component {
             temps.push(this.fromKtoC(result.data.list[8 * i].main.temp));
             weather.push(result.data.list[8 * i].weather[0].main);
           }
-  
           temps.push(true);
           this.setState({ temps5: temps, weathers5: weather });
         });
@@ -152,7 +152,7 @@ class App extends Component {
           });
           this.get_WeatherIcon(this.weatherIcon, id);
           Axios.get(
-            `https//api.openweathermap.org/data/2.5/forecast?q=${
+            `https://api.openweathermap.org/data/2.5/forecast?q=${
               this.state.cityName
             },${this.state.country_code}&appid=36f0d90b7192ba111ded2e81c0c99ed2`
           ).then(result => {
@@ -242,7 +242,7 @@ class App extends Component {
                 windSpeed={windSpeed}
               />
             </div>
-            <hr/>
+            <hr />
             <h2 className="upHeading">UpComing</h2>
             <div className="weather__wrapper">
               {days.map((day, i) => (
