@@ -65,8 +65,6 @@ class App extends Component {
         break;
       case rangeId >= 801 && rangeId <= 804:
         this.setState({ icon: icons.Clouds });
-        console.log(3333);
-
         break;
       default:
         this.setState({ icon: icons.Clouds });
@@ -112,12 +110,9 @@ class App extends Component {
             temps.push(this.fromKtoC(result.data.list[8 * i].main.temp));
             weather.push(result.data.list[8 * i].weather[0].main);
           }
-          console.log(temps);
-          console.log(weather);
-
+  
           temps.push(true);
           this.setState({ temps5: temps, weathers5: weather });
-          console.log(this.state);
         });
       });
     });
@@ -133,7 +128,7 @@ class App extends Component {
 
     if (country && city) {
       Axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_ID}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_ID}`
       )
         .then(response => {
           const { temp, temp_max, temp_min, humidity } = response.data.main;
@@ -157,12 +152,10 @@ class App extends Component {
           });
           this.get_WeatherIcon(this.weatherIcon, id);
           Axios.get(
-            `http://api.openweathermap.org/data/2.5/forecast?q=${
+            `https//api.openweathermap.org/data/2.5/forecast?q=${
               this.state.cityName
             },${this.state.country_code}&appid=36f0d90b7192ba111ded2e81c0c99ed2`
           ).then(result => {
-            console.log(result);
-
             const temps = [];
             const weather = [];
             for (let i = 1; i < 5; i++) {
@@ -226,7 +219,6 @@ class App extends Component {
       Loading,
       error
     } = this.state;
-    console.log(icon);
 
     if (Loading) {
       return <Loader />;
