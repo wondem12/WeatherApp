@@ -97,7 +97,8 @@ class App extends Component {
           id: id,
           description: description.toUpperCase(),
           windSpeed: windSpeed,
-          Loading: false
+          Loading: false,
+          error: false
         });
         this.get_WeatherIcon(this.weatherIcon, id);
         Axios.get(
@@ -151,7 +152,8 @@ class App extends Component {
             id: id,
             description: description.toUpperCase(),
             windSpeed: windSpeed,
-            Loading: false
+            Loading: false,
+            error: false
           });
           this.get_WeatherIcon(this.weatherIcon, id);
           Axios.get(
@@ -167,12 +169,8 @@ class App extends Component {
               temps.push(this.fromKtoC(result.data.list[8 * i].main.temp));
               weather.push(result.data.list[8 * i].weather[0].main);
             }
-            console.log(temps);
-            console.log(weather);
-
             temps.push(true);
             this.setState({ temps5: temps, weathers5: weather });
-            console.log(this.state);
           });
         })
         .catch(() => {
