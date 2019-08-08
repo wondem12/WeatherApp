@@ -167,6 +167,7 @@ form .btn{
   background: transparent;
   border-color: transparent;
   color: white;
+  margin-bottom: 2px;
 }
 form .btn:hover{
   background: gray;
